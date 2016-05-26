@@ -9,6 +9,7 @@ window.onload = function(){
 	var fullscreen = document.querySelector('.fullscreen');
 	var pro = document.getElementById('pro');
 	var ivolume = document.getElementById('ivolume');
+	var volPro = document.getElementById('volPro');
 	var timer = null;
 	var vScale = 0.5;
 	//播放/暂停
@@ -78,11 +79,9 @@ window.onload = function(){
 		oPro.style.webkitTransition = 'none';
 		oPro.style.mozTransition = 'none';
 	};
-
 	//点击进度条控制声音大小
 	ivolume.onclick = function(ev){
 		ev =ev || window.event;
-		var volPro = document.getElementById('volPro');
 		var currentLeft = ev.offsetX;
 		vScale = currentLeft/55;
 		if(vScale == 0){
