@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自制播放器</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="js/video.js"></script>
+</head>
+<body>
+	<!-- <section>
+		<p>HTML5自制播放器,兼容chrome,firefox等主流浏览器，IE9以下不兼容。</p>
+	</section> -->
+	<div class="main">
+		<video id="v1" width="620px" poster="2.png">
+			<source src="test.webm"></source>
+		</video>
+		<div class="ctrl">
+			<button type="button" class="btn btn-default" aria-label="Left Align">
+				<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+			</button>
+			<div class="progress" id="pro">
+			    <div id="oPro" class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+			      <span class="sr-only">20% Complete</span>
+			    </div>
+			</div>
+			<div class="timer">
+				<span class="curTime">00:00:00</span> / <span class="totalTime">00:00:00</span>
+			</div>
+			<div class="volume">
+				<button id="volBtn" type="button" class="btn btn-default" aria-label="Left Align">
+					<span id="volSpan" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+				<button>
+				<div class="progress" id="ivolume">
+			    <div id="volPro" class="progress-bar progress-bar-success progress-bar-striped ative" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+			      <span class="sr-only">20% Complete</span>
+			    </div>
+			</div>
+			</div>
+			<div class="fullscreen">
+				<button type="button" class="btn btn-default" aria-label="Left Align">
+					<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

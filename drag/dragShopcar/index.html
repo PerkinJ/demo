@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>拖拽购物车</title>
+	<link href="./bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+	/**{ margin:0; padding:0;}
+	li{ list-style:none;}
+	li{ float:left; width:200px; border:1px #000 solid; margin:10px;}
+	li img{ width:200px;padding:5px;}
+	p{ height:20px; border-bottom:1px #333 dashed;}
+	#div1{ width:600px; border:1px #000 solid; height:300px; clear:both;}
+	.box1{ float:left; width:200px;}
+	.box2{ float:left; width:200px;}
+	.box3{ float:left; width:200px;}
+	#allMoney{ float:right;}*/
+
+	.row{
+		/*position: absolute;
+		top:30px;
+		left:30px;*/
+		display: inline-block;
+		padding:20px;
+		float:left;
+		width:800px;
+	}
+	#sDiv{
+		/*border:1px solid #000;*/
+		float: left;
+		width:550px;
+		height:700px;
+		position: relative;
+	}
+	#div1{
+		position: absolute;
+		left:20px;
+		top:30px;
+
+		width:500px;
+		height:500px;
+
+	}
+	#div2{
+		position: absolute;
+		bottom:80px;
+		left:20px;
+		width:500px;
+		height:150px;
+	}
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aLi = document.getElementsByClassName('thumbnail');
+			var oImg = document.getElementsByClassName('img-rounded');
+			var oDiv = document.getElementById('div1');
+
+			var sSpan = document.getElementById('price');
+			var aL = document.querySelector('.alert');
+			var oTable = document.getElementById('oTable');
+			var obj = {};
+			var iNum = 0;
+			var allMoney = null;
+			for(var i = 0;i < aLi.length;i++){
+				aLi[i].ondragstart = function(ev){
+
+					var aH = this.getElementsByTagName('h5');
+
+					ev.dataTransfer.setData('title',aH[0].innerHTML);
+					ev.dataTransfer.setData('money',aH[1].innerHTML);
+
+					ev.dataTransfer.setDragImage(oImg,0,0);
+					ev.dataTransfer.effectAllowed = 'link';
+				};
+			}
+
+			oDiv.ondragover = function(ev){
+				ev.preventDefault();
+			};
+			oDiv.ondrop = function(ev){
+				ev.preventDefault();
+
+				var sTitle = ev.dataTransfer.getData('title');
+				var sMoney = ev.dataTransfer.getData('money');
+				console.log(sTitle);
+				if(!obj[sTitle]){
+					var oTr = document.createElement('tr');
+					var oTd = document.createElement('td');
+					oTd.className = 'box1';
+					oTd.innerHTML = 1;
+					oTr.appendChild(oTd);
+					var oTd = document.createElement('td');
+					oTd.className = 'box2';
+					oTd.innerHTML = sTitle;
+					oTr.appendChild(oTd);
+					var oTd = document.createElement('td');
+					oTd.className = 'box3';
+					oTd.innerHTML = sMoney;
+					oTr.appendChild(oTd);
+
+					oTable.appendChild(oTr);
+					obj[sTitle] = 1;
+				}else{
+					var box1 = document.getElementsByClassName('box1');
+					var box2 = document.getElementsByClassName('box2');
+
+					for(var i = 0;i < box2.length;i++){
+						if(box2[i].innerHTML == sTitle){
+							box1[i].innerHTML = parseInt(box1[i].innerHTML)+1;
+						}
+					}
+				}
+
+				if(!allMoney){
+					allMoney = document.createElement('div');
+					allMoney.id = 'allMoney';
+					
+				}
+				iNum += parseInt(sMoney);
+				allMoney.innerHTML = iNum + '￥';
+				sSpan.appendChild(allMoney);
+				aL.appendChild(sSpan);
+			};
+		};
+	</script>
+</head>
+<body>
+	<div class="row">
+	  <div class="col-sm-5 col-md-3">
+	    <div class="thumbnail" draggable="true">
+	      <img src="img1.jpg" alt="javascript语言精粹" class="img-rounded">
+	      <div class="caption">
+	        <h5>javascript语言精粹</h5>
+	        <h5>40￥</h5>
+	        <p><a href="#" class="btn btn-primary" role="button">添加</a> <a href="#" class="btn btn-default" role="button">收藏</a></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-5 col-md-3">
+	    <div class="thumbnail" draggable="true">
+	      <img src="img2.jpg" alt="javascript语言精粹" class="img-rounded">
+	      <div class="caption">
+	        <h5>javascript权威指南</h5>
+	        <h5>120￥</h5>
+	        <p><a href="#" class="btn btn-primary" role="button">添加</a> <a href="#" class="btn btn-default" role="button">收藏</a></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-5 col-md-3">
+	    <div class="thumbnail" draggable="true">
+	      <img src="img3.jpg" alt="javascript语言精粹" class="img-rounded">
+	      <div class="caption">
+	        <h5>精通javascript</h5>
+	        <h5>35￥</h5>
+	        <p><a href="#" class="btn btn-primary" role="button">添加</a> <a href="#" class="btn btn-default" role="button">收藏</a></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-5 col-md-3">
+	    <div class="thumbnail" draggable="true">
+	      <img src="img4.jpg" alt="javascript语言精粹" class="img-rounded">
+	      <div class="caption">
+	        <h5>DOM编程艺术</h5>
+	        <h5>45￥</h5>
+	        <p><a href="#" class="btn btn-primary" role="button">添加</a> <a href="#" class="btn btn-default" role="button">收藏</a></p>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-5 col-md-3">
+	    <div class="thumbnail" draggable="true">
+	      <img src="img4.jpg" alt="javascript语言精粹" class="img-rounded">
+	      <div class="caption">
+	        <h5>DOM编程艺术</h5>
+	        <h5>45￥</h5>
+	        <p><a href="#" class="btn btn-primary" role="button">添加</a> <a href="#" class="btn btn-default" role="button">收藏</a></p>
+	      </div>
+	    </div>
+	  </div>
+	 
+	</div>
+	<div id="sDiv">
+	<div id="div1">
+		<table class="table table-striped" id="oTable">
+ 			<tr>
+ 				<td>数量</td>
+ 				<td>标题</td>
+ 				<td>价格</td>
+ 			</tr>
+ 	<!-- 		<tr>
+ 				<td class="box1">1</td>
+ 				<td class="box2">javascript语言精粹</td>
+ 				<td class="box3">￥40</td>
+ 			</tr>
+ 				<tr>
+ 				<td class="box1">1</td>
+ 				<td class="box2">javascript语言精粹</td>
+ 				<td class="box3">￥40</td>
+ 			</tr> -->
+		</table>
+		</div>
+		<div id="div2">
+			<div class="alert alert-success" role="alert"><h4>您购买的金额为:<span id="price"></span></h4></div>
+			<button type="button" class="btn btn-danger btn-lg btn-block">购买</button>
+		</div>
+	</div>
+	<!-- <ul>
+		<li draggable="true">
+	    	<img src="img1.jpg" />
+	        <p>javascript语言精粹</p>
+	        <p>40￥</p>
+	    </li>
+	    <li draggable="true">
+	    	<img src="img2.jpg" />
+	        <p>javascript权威指南</p>
+	        <p>120￥</p>
+	    </li>
+	    <li draggable="true">
+	    	<img src="img3.jpg" />
+	        <p>精通javascript</p>
+	        <p>35￥</p>
+	    </li>
+	    <li draggable="true">
+	    	<img src="img4.jpg" />
+	        <p>DOM编程艺术</p>
+	        <p>45￥</p>
+	    </li>
+	</ul>
+	<div id="div1">
+		
+	</div> -->
+</body>
+</html>

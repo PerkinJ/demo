@@ -1,0 +1,108 @@
+body{
+	margin:0px;
+	padding:0px;
+	background: #423C3C;
+/*	position: relative;*/
+	}
+/*section{
+	margin:40px auto;
+	color:#fff;
+}*/
+.main{
+    position:absolute;
+    width:620px;
+    height:290px;
+	top:25%;
+	left:30%;
+	transform:transition(-50%,-50%);
+/*	border:1px solid #fff;*/
+	box-shadow: 3px 3px 3px #111;
+}
+.ctrl{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:620px;
+	height:34px;
+	border-radius: 3px;
+/*	border:1px solid #fff;*/
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+18,c8d7dc+100 */
+	background: #fff;
+}
+.btn{
+	font-size:18px;
+	border:none; 
+	height:34px;
+	width:38px;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;  
+}
+/*	#pro:hover{
+	cursor:pointer;
+}*/
+#pro{
+	display: inline;
+	position: absolute;
+	width:320px;
+	height:10px;
+	left:40px;
+	
+	bottom:-8px;
+}
+.timer{
+	display: inline;
+	width:110px;
+	height:25px;
+	line-height: 25px;
+	font-size: 12px;
+/*	border:1px solid #fff;*/
+	position: absolute;
+	left:370px;
+	bottom:3px;
+}
+.volume{
+	display: inline;
+	position: absolute;
+	left:480px;
+	height:35px;
+	width:100px;
+	line-height: 40px;
+	font-size:18px;
+/*	border:1px solid #fff;*/
+}
+.volume .btn{
+	width:33px;
+	height:33px;
+	position: absolute;
+	left:0px;
+	font-size:18px;
+	bottom:2px;
+	line-height: 25px;
+}
+.volume #ivolume{
+	width:55px;
+	height:10px;
+	position: absolute;
+	left:40px;
+	bottom:-6px;
+}
+.fullscreen{
+	position: absolute;
+	right:0px;
+	bottom:4px;
+	height:35px;
+	width:35px;
+	font-size: 18px;
+	line-height: 40px;
+
+}
+.fullscreen > .btn{
+	height:33px;
+	width:36px;
+}
